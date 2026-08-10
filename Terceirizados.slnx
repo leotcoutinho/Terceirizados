@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Terceirizados.Api/Terceirizados.Api.csproj" Id="5d4d9bd2-ec0d-473e-a34d-dd5e6ccb90a1" />
+  <Project Path="Terceirizados.Aplicacao/Terceirizados.Aplicacao.csproj" Id="bffa2762-837f-4bf7-a0ba-5f32174005a6" />
+  <Project Path="Terceirizados.Dominio/Terceirizados.Dominio.csproj" />
+  <Project Path="Terceirizados.Infraestrutura/Terceirizados.Infraestrutura.csproj" />
+</Solution>
