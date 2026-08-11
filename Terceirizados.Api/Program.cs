@@ -29,7 +29,6 @@ if (app.Environment.IsDevelopment())
     .ForceDarkMode());
 }
 
-
 app.Run();
 
 

@@ -2,7 +2,7 @@
 using Terceirizados.Dominio.Entidades;
 using Terceirizados.Dominio.Repositorios;
 
-namespace Terceirizados.Aplicacao.EmpresaApp.Comandos.Cadastrar
+namespace Terceirizados.Aplicacao.Empresas.Comandos.Cadastrar
 {
     public class ExecutarCadastrarEmpresa(IRepositorioEmpresa repositorioEmpresa) : 
         ICommandHandler<ComandoCadastrarEmpresa, Guid>

@@ -2,7 +2,7 @@
 using Terceirizados.Aplicacao.Dtos;
 using Terceirizados.Dominio.Repositorios;
 
-namespace Terceirizados.Aplicacao.FuncionarioApp.Consultas.Listar
+namespace Terceirizados.Aplicacao.Funcionarios.Consultas.Listar
 {
     public class ExecutarConsultaListarFuncionarios(IRepositorioFuncionario repositorioFuncionario) : IQueryHandler<ConsultaListarFuncionarios, ICollection<FuncionarioDto>>
     {

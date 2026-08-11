@@ -36,15 +36,15 @@ namespace Terceirizados.Infraestrutura.Repositorios
             await contexto.SaveChangesAsync();
         }
 
-        public Task Remover(Guid funcionarioId)
+        public Task Remover(Guid funcionarioId) 
         {
             var funcionario = contexto.Funcionarios.Find(funcionarioId);
-            if (funcionario != null)
-            {
-                contexto.Remove(funcionario);
-                return contexto.SaveChangesAsync();
-            }
-            throw new ArgumentException("Funcionário não encontrado.", nameof(funcionarioId));
+            if (funcionario == null)
+                throw new ArgumentException("Funcionário não encontrado.", nameof(funcionarioId));
+
+            contexto.Remove(funcionario);
+            return contexto.SaveChangesAsync();
+
         }
 
     }

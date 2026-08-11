@@ -1,6 +1,7 @@
 ﻿using Mediator;
-using Terceirizados.Aplicacao.FuncionarioApp.Comandos.Cadastrar;
-using Terceirizados.Aplicacao.FuncionarioApp.Consultas.Listar;
+using Terceirizados.Aplicacao.Funcionarios.Comandos.Cadastrar;
+using Terceirizados.Aplicacao.Funcionarios.Consultas.BuscarPorId;
+using Terceirizados.Aplicacao.Funcionarios.Consultas.Listar;
 
 namespace Terceirizados.Api.Endpoints
 {
@@ -8,14 +9,23 @@ namespace Terceirizados.Api.Endpoints
     {
         public static void MapEndpoint(IEndpointRouteBuilder app)
         {
-            app.MapGet("/funcionarios", ListarFuncionarios);
-            app.MapPost("/funcionarios", CadastrarFuncionario);
+            var api = app.MapGroup("/api");
+
+            api.MapGet("/funcionarios", ListarFuncionarios);
+            api.MapGet("/funcionarios/{id}", BuscarPorId);
+            api.MapPost("/funcionarios", CadastrarFuncionario);
         }
 
-        private static async Task<IResult> ListarFuncionarios(IMediator mediator, ConsultaListarFuncionarios consulta)
+        private static async Task<IResult> ListarFuncionarios(IMediator mediator)
         {
-            var funcionarios = await mediator.Send(consulta);
+            var funcionarios = await mediator.Send(new ConsultaListarFuncionarios());
             return Results.Ok(funcionarios);
+        }
+
+        private static async Task<IResult> BuscarPorId(IMediator mediator, Guid id)
+        {
+            var funcionario = await mediator.Send(new ConsultaBuscarPorId(id));
+            return Results.Ok(funcionario);
         }
 
         private static async Task<IResult> CadastrarFuncionario(IMediator mediator, ComandoCadastrarFuncionario comando)

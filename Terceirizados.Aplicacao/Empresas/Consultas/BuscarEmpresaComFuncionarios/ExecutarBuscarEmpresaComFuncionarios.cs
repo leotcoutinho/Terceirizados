@@ -2,9 +2,9 @@
 using Terceirizados.Aplicacao.Dtos;
 using Terceirizados.Dominio.Repositorios;
 
-namespace Terceirizados.Aplicacao.EmpresaApp.Consultas.BusarEmpresaComFuncionarios
+namespace Terceirizados.Aplicacao.Empresas.Consultas.BuscarEmpresaComFuncionarios
 {
-    public class ExacutarBuscarEmpresaComFuncionarios(IRepositorioEmpresa repositorioEmpresa) : IQueryHandler<ConsultaBuscarEmpresaComFuncionarios, EmpresaFuncionariosDto>
+    public class ExecutarBuscarEmpresaComFuncionarios(IRepositorioEmpresa repositorioEmpresa) : IQueryHandler<ConsultaBuscarEmpresaComFuncionarios, EmpresaFuncionariosDto>
     {
         public async ValueTask<EmpresaFuncionariosDto> Handle(ConsultaBuscarEmpresaComFuncionarios query, CancellationToken cancellationToken)
         {

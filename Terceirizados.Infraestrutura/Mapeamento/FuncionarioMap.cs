@@ -48,11 +48,10 @@ namespace Terceirizados.Infraestrutura.Mapeamento
                 .HasColumnName("Telefone")
                 .HasMaxLength(15);
 
-
             entidade.Property(x => x.Ativo)
                 .HasColumnName("Ativo");
 
-            // relacionamento com a tabela Empresa
+            // relacionamento com Empresa
             entidade.HasOne(e => e.Empresa)
                 .WithMany(f => f.Funcionarios)
                 .HasForeignKey(f => f.EmpresaId)
