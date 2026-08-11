@@ -1,5 +1,6 @@
 ﻿using Mediator;
 using Terceirizados.Aplicacao.Funcionarios.Comandos.Cadastrar;
+using Terceirizados.Aplicacao.Funcionarios.Comandos.Remover;
 using Terceirizados.Aplicacao.Funcionarios.Consultas.BuscarPorId;
 using Terceirizados.Aplicacao.Funcionarios.Consultas.Listar;
 
@@ -12,8 +13,15 @@ namespace Terceirizados.Api.Endpoints
             var api = app.MapGroup("/api");
 
             api.MapGet("/funcionarios", ListarFuncionarios);
-            api.MapGet("/funcionarios/{id}", BuscarPorId);
+            api.MapGet("/funcionarios/{id:guid}", BuscarPorId);
             api.MapPost("/funcionarios", CadastrarFuncionario);
+            api.MapDelete("/funcionarios/{id:guid}", RemoverFuncionario);   
+        }
+
+        private static async Task<IResult> RemoverFuncionario(IMediator mediator, Guid id)
+        {
+           await mediator.Send(new ComandoRemoverFuncionario(id));
+           return Results.NoContent();
         }
 
         private static async Task<IResult> ListarFuncionarios(IMediator mediator)

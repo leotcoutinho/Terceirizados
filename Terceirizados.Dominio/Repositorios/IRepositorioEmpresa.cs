@@ -10,6 +10,6 @@ namespace Terceirizados.Dominio.Repositorios
         Task<Empresa?> BuscarEmpresaComFuncionarios(Guid empresaId, CancellationToken cancellationToken = default);
         Task<Guid> Inserir(Empresa empresa, CancellationToken cancellationToken = default);
         Task Atualizar(Empresa empresa);
-        Task Remover(Guid empresaId);
+        Task Remover(Empresa empresa);
     }
 }

@@ -23,7 +23,7 @@ namespace Terceirizados.Api.Endpoints
         private static async Task<IResult> RemoverEmpresa(IMediator mediator, Guid Id)
         {
             await mediator.Send(new ComandoRemoverEmpresa(Id));
-            return Results.Ok();
+            return Results.NoContent();
         }
 
         private static async Task<IResult> BuscarEmpresaComFuncionarios(IMediator mediator, Guid Id)

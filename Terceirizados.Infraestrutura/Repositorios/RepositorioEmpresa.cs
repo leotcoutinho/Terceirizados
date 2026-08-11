@@ -40,19 +40,11 @@ namespace Terceirizados.Infraestrutura.Repositorios
             await contexto.SaveChangesAsync();
         }
 
-        public async Task Remover(Guid empresaId)
+        public async Task Remover(Empresa empresa)
         {
-            var empresa = await contexto.Empresas.FindAsync(new object[] { empresaId });
-
-            if (empresa != null)
-            {
-                contexto.Empresas.Remove(empresa);
-                await contexto.SaveChangesAsync();
-            }
-            else
-            {
-                throw new ArgumentNullException(nameof(empresa), "Não foi possível remover porque a empresa não foi encontrada.");
-            }
+            contexto.Empresas.Remove(empresa);
+            await contexto.SaveChangesAsync();
+            await contexto.SaveChangesAsync();
         }
     }
 }

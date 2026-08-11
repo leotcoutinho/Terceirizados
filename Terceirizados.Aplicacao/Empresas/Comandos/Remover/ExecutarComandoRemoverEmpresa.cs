@@ -7,7 +7,13 @@ namespace Terceirizados.Aplicacao.Empresas.Comandos.Remover
     {
         public async ValueTask<Unit> Handle(ComandoRemoverEmpresa command, CancellationToken cancellationToken)
         {
-            await repositorioEmpresa.Remover(command.empresaId);
+            var empresa = await repositorioEmpresa.BuscarPorId(command.empresaId, cancellationToken);
+
+            if (empresa == null)
+                throw new Exception("Empresa não encontrada.");
+
+            await repositorioEmpresa.Remover(empresa);
+
             return await ValueTask.FromResult(Unit.Value);
         }
     }

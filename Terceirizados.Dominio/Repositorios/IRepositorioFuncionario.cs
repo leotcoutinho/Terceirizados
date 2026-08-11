@@ -9,6 +9,6 @@ namespace Terceirizados.Dominio.Repositorios
         Task<Funcionario?> BuscarPorId(Guid funcionarioId, CancellationToken cancellationToken = default);
         Task<Guid> Inserir(Funcionario funcionario);
         Task Atualizar(Funcionario funcionario);
-        Task Remover(Guid funcionarioId);
+        Task Remover(Funcionario funcionario);
     }
 }

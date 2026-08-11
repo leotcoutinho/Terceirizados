@@ -7,7 +7,13 @@ namespace Terceirizados.Aplicacao.Funcionarios.Comandos.Remover
     {
         public async ValueTask<Unit> Handle(ComandoRemoverFuncionario command, CancellationToken cancellationToken)
         {
-            await repositorioFuncionario.Remover(command.funcionarioId);
+            var funcionario = await repositorioFuncionario.BuscarPorId(command.funcionarioId);
+
+            if(funcionario == null)
+                throw new Exception($"Funcionário com ID {command.funcionarioId} não encontrado.");
+
+            await repositorioFuncionario.Remover(funcionario);
+
             return await ValueTask.FromResult(Unit.Value);
         }
     }
